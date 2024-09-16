@@ -1,0 +1,58 @@
+BapBot v1.0.0 | 9/15/2024 
+
+*****Initial Release*****
+
+Initial launch available commands: 
+    
+    Introducing basic general commands.
+    - ❓'./help' Displays all commands.
+    - 📃'./changelog {version}' Displays provided versions changelog otherwise displays all versions.
+    - 🔗'./invite' Provides invite link for bot. 
+
+Other:
+
+    Bot activity will change every 30 minutes. 
+    Every 10 messages sent, the bot will send a random cat or frog gif. (amt. of messages sent subject to change)
+    Every 15 messages sent, the bot will say a random string of words gathered from all text channels. (amt. of messages sent subject to chanage)
+
+Next patch commands: 
+
+    'Fun' commands. 
+    - ❌⭕'./ttt' as tic-tac-toe. Player vs. Player or Player vs. Bot  
+    - 🐟'./fish'. Catch fish of different rarities. (Varieties of different fish and rarities added every update.)
+    - 🪨📃✂️'./rps' as rock-paper-scissors. Player vs Player. 
+    - 🪙'./coinflip' Basic coinflip command.  
+    - 👁️'./stalk'. See what {given_username} is doing on a specific platform. Works with Roblox. Will work with STEAM API soon.
+    - 👑'./lb'. See the server's leaderboard stats in different activities. Fish collection, rock-paper-scissors wins, tic-tac-toe wins, etc.
+
+                             .-----.
+                            /7  .  (
+                           /   .-.  \
+                          /   /   \  \
+                         / `  )   (   )
+                        / `   )   ).  \
+                      .'  _.   \_/  . |
+     .--.           .' _.' )`.        |
+    (    `---...._.'   `---.'_)    ..  \
+     \            `----....___    `. \  |
+      `.           _ ----- _   `._  )/  |
+        `.       /"  \   /"  \`.  `._   |
+          `.    ((O)` ) ((O)` ) `.   `._\
+            `-- '`---'   `---' )  `.    `-.
+               /                  ` \      `-.
+             .'                      `.       `.
+            /                     `  ` `.       `-.
+     .--.   \ ===._____.======. `    `   `. .___.--`     .''''.
+    ' .` `-. `.                )`. `   ` ` \          .' . '  8)
+   (8  .  ` `-.`.               ( .  ` `  .`\      .'  '    ' /
+    \  `. `    `-.               ) ` .   ` ` \  .'   ' .  '  /
+     \ ` `.  ` . \`.    .--.     |  ` ) `   .``/   '  // .  /
+      `.  ``. .   \ \   .-- `.  (  ` /_   ` . / ' .  '/   .'
+        `. ` \  `  \ \  '-.   `-'  .'  `-.  `   .  .'/  .'
+          \ `.`.  ` \ \    ) /`._.`       `.  ` .  .'  /
+    LGB    |  `.`. . \ \  (.'               `.   .'  .'
+        __/  .. \ \ ` ) \                     \.' .. \__
+ .-._.-'     '"  ) .-'   `.                   (  '"     `-._.--.
+(_________.-====' / .' /\_)`--..__________..-- `====-. _________)
+                 (.'(.'
+Art by lgbeard
