@@ -15,7 +15,7 @@ Other:
     Every 10 messages sent, the bot will send a random cat or frog gif. (amt. of messages sent subject to change)
     Every 15 messages sent, the bot will say a random string of words gathered from all text channels. (amt. of messages sent subject to chanage)
 
-Next patch commands: 
+Next upcoming commands: 
 
     'Fun' commands. 
     - ❌⭕'./ttt' as tic-tac-toe. Player vs. Player or Player vs. Bot  

@@ -21,14 +21,13 @@ def read_from_file(channel_id):
     except FileNotFoundError:
         return ""
 """
-
+                
 def append_to_file(message):
     try:
         with open(f"Bot/Text/markov_shared.txt", "a", encoding="utf-8") as file:
-            file.write(message + ".\n")  # Add a newline character after each message
+            file.write(message + "\n")  # Add a newline character after each message
     except Exception as e:
         print(f"Failed to write to file: {e}")  # Print the error if writing fails
-
 
 def read_from_file():
     try:
@@ -68,7 +67,7 @@ async def update_markov_model(message):
     message_counts_markov[message.channel.id] = message_counts_markov.get(message.channel.id, 0) + 1
 
     # Trigger Markov generation every 15 messages
-    if message_counts_markov[message.channel.id] >= 20:
+    if message_counts_markov[message.channel.id] >= 45:
         message_counts_markov[message.channel.id] = 0  # Reset the Markov message count
 
         # Read text from file
@@ -76,20 +75,9 @@ async def update_markov_model(message):
         word_count = len(text_data.split())
 
         if word_count > 50:  # Ensure enough data to generate
-            model = markovify.Text(text_data)
+            model = markovify.Text(text_data, state_size=1)
 
-            # Choose between generating a short, long, or normal sentence
-            sentence_type = random.choice(['short', 'normal', 'long'])
-
-            if sentence_type == 'short':
-                # Generate a short sentence (e.g., up to 50 characters)
-                sentence = model.make_short_sentence(max_chars=50, tries=1)
-            elif sentence_type == 'long':
-                # Generate a longer sentence (e.g., up to 200 characters)
-                sentence = model.make_short_sentence(max_chars=200, tries=1)
-            else:
-                # Generate a normal sentence with no specific constraints
-                sentence = model.make_sentence(tries=1)
+            sentence = model.make_sentence(tries = 100)
 
             if sentence:
                 await message.channel.send(sentence)
@@ -176,9 +164,22 @@ def register(bot):
             if message.content.startswith(bot.command_prefix):
                 await bot.process_commands(message)
                 return  # Don't add this message to the Markov chain file
+            
+            # Check if the bot is mentioned and 'thoughts' is in the message 
+            if bot.user.mentioned_in(message) and 'thoughts' in message.content.lower():
+                try:
+                    # Read responses from the dedicated file 
+                    with open('Bot/Text/thoughts_responses.txt', 'r') as file:
+                        responses = file.readlines()
+                        
+                    response = random.choice(responses).strip()
+                    await message.reply(response)
+                except Exception as e:
+                    await message.channel.send(f"Error: {str(e)}")  # Send an error message if reading fails
+                return  # Avoid triggering other actions if 'thoughts' is mentioned                    
 
             # Check if the bot is mentioned
-            if bot.user in message.mentions:
+            elif bot.user in message.mentions:
                 # Send a random response when mentioned
                 action = random.choice(['greet', 'gif', 'sentence'])
                 if action == 'greet':
@@ -198,13 +199,13 @@ def register(bot):
                             await message.reply("Not enough unique data to generate a message.")
                     else:
                         await message.reply("Not enough unique data to generate a message.")
-                return  # Stop further processing if the bot was mentioned
+                return  # Avoid triggering other actions if mentioned
 
             # Increment the GIF-specific message count for the channel
             message_counts_gif[message.channel.id] = message_counts_gif.get(message.channel.id, 0) + 1
 
             # Trigger GIF sending every 10 messages
-            if message_counts_gif[message.channel.id] >= 15:
+            if message_counts_gif[message.channel.id] >= 35:
                 message_counts_gif[message.channel.id] = 0  # Reset the GIF message count
                 await send_random_gif(message.channel)
 
@@ -220,7 +221,17 @@ def register(bot):
     from Commands import bot_changelog # Import the changelog command from the changelog module
     bot_changelog(bot)
     
-    from Commands import invite_link # Import the invite command from the invite module 
-    invite_link(bot)
+    from Commands import bot_invite_link # Import the invite command from the invite module 
+    bot_invite_link(bot)
     
+    from Commands import bot_modif_roles # Import the roles command from the roles module
+    bot_modif_roles(bot)
     
+    from Commands import bot_leaderboard # Import the leaderboard command from the leaderboard module 
+    bot_leaderboard(bot)
+    
+    from Commands import bot_coinflip # Import the coinflip command from the coinflip module
+    bot_coinflip(bot)
+    
+    from Commands import bot_stalk # Import the stalk command from the stalk module
+    bot_stalk(bot)

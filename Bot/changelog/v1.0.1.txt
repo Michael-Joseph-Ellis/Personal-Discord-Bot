@@ -1,0 +1,75 @@
+BapBot v1.0.1 | 9/19/2024
+
+Changes: 
+  1. Changed how frequent the bot replies with a random markov generated message. (15 -> 45)
+  2. Changed how frequent the bot sends a random gif. (10 -> 35) 
+    Bap note: These should hopefully fill chat a lot less. 
+    Bap note: Might increase amt of messages again, still seems too frequent.
+  3. When appending messages to the Markov model data file, we no longer will add periods at the end of each read. 
+    
+    Example of this: 
+      BapBot reads user message "test"
+      Appends "test" to markov_data with '.'
+      markov_data shows "test."
+
+                 from
+      {file.write(message + ".\n")}
+                  to
+      {file.write(message + "\n")}
+
+     This is done to prevent the bot sending sentences with random periods in the middle of sentences.
+  4. Changed number of tries for Markovify to create a coherent sentence. (1 -> 100)
+
+      {sentence = model.make_sentence(tries = 100)}
+     
+     Also changed state size to 1 to allow Markovify to handle text without punctuation 
+
+      {model = markovify.Text(text_data, state_size=1)}
+
+     Hopefully increases funny value with more almost coherent/mostly incoherent sentences. Will continue to fine-tune this to see what works best.
+
+Additions: 
+  (Command) './coinflip' Introduced a coinflip command. No reason whatsoever. 
+  (Command) './stalk' (WIP roblox api being dogshit idk)
+  (Command) './lb' Introduced embeded leaderboard commands. Leaderboard commands not embeded, currently have placeholders until 'Fun Commands' drop.
+  (Command) './roles' Added roles commands. Allows those in Acrypt to change role color and names. Currently hard coded to work for only the Acrypt server because I'm lazy. Will change this soon to work in any server. 
+  (Messaging) 'Thoughtful reply' Users that @mention/reply to the bot along with adding the string 'thoughts' anywhere in their message gets a reply back with the bots built in 'thoughts' from a .txt file. 
+    Bap note: Currently thinking of replies to give to the bot.
+  (Other) Added a couple more activities for activity display. 
+
+SOON:
+  (Command) './ttt'
+  (Command) './rps'
+  (Command) './fish'
+
+                             .-----.
+                            /7  .  (
+                           /   .-.  \
+                          /   /   \  \
+                         / `  )   (   )
+                        / `   )   ).  \
+                      .'  _.   \_/  . |
+     .--.           .' _.' )`.        |
+    (    `---...._.'   `---.'_)    ..  \
+     \            `----....___    `. \  |
+      `.           _ ----- _   `._  )/  |
+        `.       /"  \   /"  \`.  `._   |
+          `.    ((O)` ) ((O)` ) `.   `._\
+            `-- '`---'   `---' )  `.    `-.
+               /                  ` \      `-.
+             .'                      `.       `.
+            /                     `  ` `.       `-.
+     .--.   \ ===._____.======. `    `   `. .___.--`     .''''.
+    ' .` `-. `.                )`. `   ` ` \          .' . '  8)
+   (8  .  ` `-.`.               ( .  ` `  .`\      .'  '    ' /
+    \  `. `    `-.               ) ` .   ` ` \  .'   ' .  '  /
+     \ ` `.  ` . \`.    .--.     |  ` ) `   .``/   '  // .  /
+      `.  ``. .   \ \   .-- `.  (  ` /_   ` . / ' .  '/   .'
+        `. ` \  `  \ \  '-.   `-'  .'  `-.  `   .  .'/  .'
+          \ `.`.  ` \ \    ) /`._.`       `.  ` .  .'  /
+    LGB    |  `.`. . \ \  (.'               `.   .'  .'
+        __/  .. \ \ ` ) \                     \.' .. \__
+ .-._.-'     '"  ) .-'   `.                   (  '"     `-._.--.
+(_________.-====' / .' /\_)`--..__________..-- `====-. _________)
+                 (.'(.'
+Art by lgbeard

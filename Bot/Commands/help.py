@@ -46,7 +46,7 @@ def bot_help(bot):
             embeds = [
                 discord.Embed(title="General Commands", description="Some general commands.", color=discord.Color.blue()),
                 discord.Embed(title="Fun Commands", description="Commands for fun and games.", color=discord.Color.pink()),
-                #discord.Embed(title="Utility Commands", description="Commands for utility purposes.", color=discord.Color.orange()),
+                discord.Embed(title="Utility Commands", description="Commands for utility purposes.", color=discord.Color.orange()),
                 #discord.Embed(title="Music Commands", description="Commands for music.", color=discord.Color.red()),
                 #discord.Embed(title="Moderation Commands", description="Commands for moderation.", color=discord.Color.green())
                 # Add more pages as needed
@@ -59,9 +59,11 @@ def bot_help(bot):
             #embeds[1].add_field(name="./ttt", value="Play tic-tac-toe with another member.", inline=True)
             #embeds[1].add_field(name="./fish", value="Fishing! (WIP)", inline=True)
             #embeds[1].add_field(name="./rps", value="Rock, paper, scissors.. shoo!", inline=True)
-            #embeds[1].add_field(name="./coinflip", value="Basic coinflip command.", inline=True)
-            #embeds[1].add_field(name="./stalk", value="See someones activity.", inline=True)
-            #embeds[1].add_field(name="./lb", value="Show fun activity leaderboard rankings in server.", inline=True)
+            embeds[1].add_field(name="./coinflip", value="Basic coinflip command.", inline=True)
+            embeds[1].add_field(name="./stalk", value="See someones activity.", inline=True)
+            embeds[1].add_field(name="./lb", value="Show fun activity leaderboard rankings in server.", inline=True)
+            
+            embeds[2].add_field(name="./roles", value="Show roles commands.", inline=True)
             # You can add more fields to each embed according to your command structure
 
             # Send the first page

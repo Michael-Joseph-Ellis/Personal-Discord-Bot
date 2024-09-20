@@ -36,7 +36,7 @@ Note:
 - Adjust the `permissions` integer based on the actual permissions needed for the bot to function as intended on a server.
 """
 
-def invite_link(bot):
+def bot_invite_link(bot):
     @bot.command()
     async def invite(ctx):
         # Define the client ID and the permissions integer

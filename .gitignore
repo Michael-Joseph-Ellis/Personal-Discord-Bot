@@ -2,3 +2,5 @@
 config.json
 Text/
 GIFs/
+__pycache__/
+*.pyc
